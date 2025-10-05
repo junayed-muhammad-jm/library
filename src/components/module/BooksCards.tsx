@@ -1,7 +1,7 @@
-import type { ImageData } from "@/data/data";
+import type {ImagesData } from "@/page/data";
 import { Link } from "react-router";
 
-function BooksCards({ product }: { product: ImageData }) {
+function BooksCards({ product }: { product: ImagesData }) {
     return (
         <div
             className="

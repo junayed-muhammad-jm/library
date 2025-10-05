@@ -1,5 +1,5 @@
 import BooksCards from "@/components/module/BooksCards";
-import ImageData from "@/data/data";
+import ImageData from "@/page/data";
 
 function Life() {
     return ( 
