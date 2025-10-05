@@ -1,4 +1,4 @@
-import type {ImagesData } from "@/page/data";
+import type {ImagesData } from "@/data/data";
 import { Link } from "react-router";
 
 function BooksCards({ product }: { product: ImagesData }) {
