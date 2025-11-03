@@ -11,8 +11,8 @@ function Navbar() {
         { name: "Writers", path: "/writer" },
         { name: "Categories", path: "/category-section" },
         { name: "Books", path: "/library" },
-        { name: "Contact", path: "/contact" },
         { name: "Library", path: "/pdf-book" },
+        { name: "Contact", path: "/contact" },
     ];
 
     return (

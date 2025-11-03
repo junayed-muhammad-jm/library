@@ -1,9 +1,25 @@
+"use client";
 import LibraryBanner from "@/components/module/LibraryBanner";
 import { useEffect, useState } from "react";
 
+// Type definitions for Google Books API
+interface VolumeInfo {
+    title: string;
+    authors?: string[];
+    imageLinks?: {
+        thumbnail?: string;
+    };
+    infoLink: string;
+}
+
+interface BookItem {
+    id: string;
+    volumeInfo: VolumeInfo;
+}
+
 function BookLibrary() {
-    const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [books, setBooks] = useState<BookItem[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         fetch("https://www.googleapis.com/books/v1/volumes?q=fiction&maxResults=40")
@@ -17,7 +33,6 @@ function BookLibrary() {
 
     return (
         <>
-
             <LibraryBanner />
             <section className="max-w-6xl mx-auto px-4 py-8">
                 <h2 className="text-3xl font-bold text-gray-800 mb-6">📚 Library</h2>
@@ -28,7 +43,7 @@ function BookLibrary() {
                     <p className="text-center text-gray-500">No books found 😢</p>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        {books.map((book) => {
+                        {books.map((book: BookItem) => {
                             const info = book.volumeInfo;
                             return (
                                 <div
