@@ -3,11 +3,26 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search as SearchIcon, Loader2 } from "lucide-react";
 
+// Type definitions for Google Books API
+interface VolumeInfo {
+    title: string;
+    authors?: string[];
+    imageLinks?: {
+        thumbnail?: string;
+    };
+    infoLink: string;
+}
+
+interface BookItem {
+    id: string;
+    volumeInfo: VolumeInfo;
+}
+
 function LibraryBanner() {
-    const [query, setQuery] = useState("");
-    const [results, setResults] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [showResults, setShowResults] = useState(false);
+    const [query, setQuery] = useState<string>("");
+    const [results, setResults] = useState<BookItem[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [showResults, setShowResults] = useState<boolean>(false);
 
     // 🔍 Fetch Books from Google Books API
     useEffect(() => {
@@ -84,7 +99,6 @@ function LibraryBanner() {
              focus:border-teal-400 focus:ring-2 focus:ring-teal-500 transition-all duration-200 backdrop-blur-sm"
                     />
 
-                    {/* Loading spinner */}
                     {loading && (
                         <Loader2
                             className="absolute right-5 top-1/2 -translate-y-1/2 text-teal-400 animate-spin"
@@ -94,7 +108,7 @@ function LibraryBanner() {
                 </motion.div>
             </div>
 
-            {/* Search Results Section (fixed below banner) */}
+            {/* Search Results Section */}
             {showResults && results.length > 0 && (
                 <div className="relative z-20 mt-10 px-4">
                     <div className="max-w-5xl mx-auto bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-6 border border-gray-200">
@@ -103,7 +117,7 @@ function LibraryBanner() {
                         </h3>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5">
-                            {results.map((book) => {
+                            {results.map((book: BookItem) => {
                                 const info = book.volumeInfo;
                                 return (
                                     <a
