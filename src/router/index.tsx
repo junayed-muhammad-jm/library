@@ -1,5 +1,10 @@
+import LoginPage from "@/components/auth/LoginPage";
+import RegisterPage from "@/components/auth/RegisterPage";
 import FrontLayout from "@/components/layout/FrontLayout";
-import AboutPage from "@/page/about/AboutPage";
+import CategorySection from "@/components/module/CategorySection";
+import ContactPage from "@/components/module/ContactPage";
+import BookLibrary from "@/page/book/BookLibrary";
+
 import PdfBook from "@/page/book/PdfBook";
 import HomePage from "@/page/home";
 import WriterPage from "@/page/writer/WriterPage";
@@ -19,16 +24,33 @@ const router = createBrowserRouter([
 
             },
             {
-                path: "/about",
-                Component: AboutPage
+                path: "/category-section",
+                Component: CategorySection
             },
             {
-                path : "/writer",
-                Component : WriterPage
+                path: "/writer",
+                Component: WriterPage
             },
             {
-                path : "/pdf-book",
-                Component : PdfBook
+                path: "/pdf-book",
+                Component: PdfBook
+            },
+            {
+                path: "/contact",
+                Component: ContactPage
+            },
+            {
+                path: "/login",
+                Component: LoginPage
+            },
+            {
+                path: "/register",
+                Component: RegisterPage
+            },
+
+            {
+                path: "/library",
+                Component: BookLibrary
             }
 
         ]
